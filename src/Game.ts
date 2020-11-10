@@ -22,13 +22,13 @@ class Game {
     private word: TextString;
 
     // The hangman parts
-    // TODO declare the other parts of the hangman
+    
     private base: Rectangle;
     private verticalPole: Rectangle;
     private horizontalPole: Rectangle;
     private verticalString: Line;
     private head: Ellipse;
-    private body: Line;
+    private body: Rectangle;
     private leftArm: Line;
     private rightArm: Line;
     private leftLeg: Line;
@@ -58,13 +58,27 @@ class Game {
         this.word = new TextString(cx, 220, "_ _ _ _ _ _ _ _");
 
         // The base of the hangman
-        this.base = new Rectangle(cx - 300, cy * 1.75, 600, 50);
+        this.base = new Rectangle(cx - 200, cy * 1.75, 300, 35);
         this.base.fillStyle = "brown";
         // TODO create the other parts of the hangman
-        this.verticalPole = new Rectangle(cx - 300, cy * 0.25, 30, 600);
+        this.verticalPole = new Rectangle(cx - 200, cy * 0.75, 30, 400);
         this.verticalPole.fillStyle = "brown";
-        this.horizontalPole = new Rectangle(cx - 300, cy * 0.25, 600, 30);
-        this.verticalString = new Line(0, 0.25,10,2.50)
+        this.horizontalPole = new Rectangle(cx - 200, cy * 0.75, 200, 27);
+        this.horizontalPole.fillStyle = "brown";
+        this.verticalString = new Line(cx - 1, cy - 30, cx - 1, cy - 80);
+        this.verticalString.strokeStyle = "black";
+        this.head = new Ellipse(cx - 1, cy - 10 , 40, 40);
+        this.body = new Rectangle(cx - 5, cy - 0, 10, 140);
+        this.leftArm = new Line(cx - 0, cy - -40, cx- 20, cy - -120);
+        this.leftArm.lineWidth = 5; 
+        this.rightArm = new Line(cx - 0, cy - -40, cx+ 20, cy - -120);
+        this.rightArm.lineWidth = 5;
+        this.leftLeg = new Line(cx - 2, cy - -140, cx- 10, cy - -230);
+        this.leftLeg.lineWidth = 5;
+        this.rightLeg = new Line(cx + 2, cy - -140, cx+ 10, cy - -230);
+        this.rightLeg.lineWidth = 5;
+        
+        
 
         // Draw the canvas
         this.drawCanvas();
@@ -87,6 +101,13 @@ class Game {
         this.verticalPole.drawRectangle(this.ctx);
         this.horizontalPole.drawRectangle(this.ctx);
         this.verticalString.drawLine(this.ctx);
+        this.head.drawCircle(this.ctx);
+        this.body.drawRectangle(this.ctx);
+        this.leftArm.drawLine(this.ctx);
+        this.rightArm.drawLine(this.ctx);
+        this.leftLeg.drawLine(this.ctx);
+        this.rightLeg.drawLine(this.ctx);
+
     }
 
     /**
