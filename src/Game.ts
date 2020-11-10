@@ -22,8 +22,19 @@ class Game {
     private word: TextString;
 
     // The hangman parts
-    private base: Rectangle;
     // TODO declare the other parts of the hangman
+    private base: Rectangle;
+    private verticalPole: Rectangle;
+    private horizontalPole: Rectangle;
+    private verticalString: Line;
+    private head: Ellipse;
+    private body: Line;
+    private leftArm: Line;
+    private rightArm: Line;
+    private leftLeg: Line;
+    private rightLeg: Line;
+
+    
 
     /**
      * Construct a new Game.
@@ -50,6 +61,10 @@ class Game {
         this.base = new Rectangle(cx - 300, cy * 1.75, 600, 50);
         this.base.fillStyle = "brown";
         // TODO create the other parts of the hangman
+        this.verticalPole = new Rectangle(cx - 300, cy * 0.25, 30, 600);
+        this.verticalPole.fillStyle = "brown";
+        this.horizontalPole = new Rectangle(cx - 300, cy * 0.25, 600, 30);
+        this.verticalString = new Line(0, 0.25,10,2.50)
 
         // Draw the canvas
         this.drawCanvas();
@@ -69,6 +84,9 @@ class Game {
         // Draw the hangman
         this.base.drawRectangle(this.ctx);
         // TODO draw the other parts of the hangman
+        this.verticalPole.drawRectangle(this.ctx);
+        this.horizontalPole.drawRectangle(this.ctx);
+        this.verticalString.drawLine(this.ctx);
     }
 
     /**
